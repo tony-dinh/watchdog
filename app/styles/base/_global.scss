@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box !important;
+}
+
+// HTML
+// ===
+// 1. 👩‍🏫 Browser default font size is 16px – 62.5% of that is 10px. This is so
+//    1rem = 10px for easier calculations.
+
+html {
+    font-size: 62.5%; // 1
+}
+
+body {
+    margin: 0;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
