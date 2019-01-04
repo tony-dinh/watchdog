@@ -3,7 +3,7 @@
 import React from 'react'
 import {jsx} from '@emotion/core'
 import styles from './styles'
-import COLORS from 'styles/variables/colors'
+import COLORS from 'styles/variables/color'
 
 const RADIUS = 50
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS

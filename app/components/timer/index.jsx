@@ -3,6 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {jsx} from '@emotion/core'
+import StopButton from 'components/button/stop'
 
 import Knob from './partials/knob'
 import Progress from './partials/progress'
@@ -15,7 +16,9 @@ class Timer extends React.PureComponent {
     // ===============================
 
     static getDerivedStateFromProps({alarm}) {
-        return alarm ? {duration: alarm.duration} : null
+        return alarm
+            ? {isStarted: true, duration: alarm.duration}
+            : {isStarted: false}
     }
 
     // ===============================
@@ -39,7 +42,7 @@ class Timer extends React.PureComponent {
     }
 
     componentDidUpdate(prevProps) {
-        const {prevAlarm} = prevProps
+        const {alarm: prevAlarm} = prevProps
         const {alarm} = this.props
 
         // If there is no alarm – no action needed
@@ -56,7 +59,6 @@ class Timer extends React.PureComponent {
         // and start the timer if the alarm is still active
         const remainingDuration = alarm.when - Date.now()
 
-        !this.state.isStarted &&
         remainingDuration > 0 &&
         this.start(remainingDuration)
     }
@@ -65,11 +67,11 @@ class Timer extends React.PureComponent {
     start = (duration) => {
         const oneSecond = 1000
         const remainingDuration = Math.max(duration - oneSecond, 0)
-        const isStarted = remainingDuration > 0
+        const isActive = remainingDuration > 0
 
-        this.setState({isStarted, remainingDuration}, () => {
+        this.setState({remainingDuration}, () => {
             // If there is no duration left on the alarm, end it.
-            if (!isStarted) {
+            if (!isActive) {
                 return this.end()
             }
 
@@ -79,8 +81,14 @@ class Timer extends React.PureComponent {
 
     end = () => {
         clearTimeout(this.timeout)
+
         this.props.onAlarmEnd &&
         this.props.onAlarmEnd()
+
+        this.setState({
+            duration: 0,
+            remainingDuration: 0
+        })
     }
 
     onDrag = ({duration}) => {
@@ -121,12 +129,17 @@ class Timer extends React.PureComponent {
                         onDragEnd={this.onDragEnd}
                     />
                 )}
+
+                {isStarted && (
+                    <StopButton className="stop-button" onClick={this.end} />
+                )}
             </div>
         )
     }
 }
 
 Timer.propTypes = {
+    alarm: PropTypes.object,
     progress: PropTypes.number,
     sensitivity: PropTypes.string,
     onAlarmEnd: PropTypes.func,

@@ -1,4 +1,4 @@
-import COLORS from 'styles/variables/colors'
+import COLORS from 'styles/variables/color'
 
 export default {
     backgroundColor: COLORS.THEME.DARK,

@@ -1,6 +1,6 @@
 import {toREM} from 'styles/utils/spacing'
 import {CAPTION_TEXT} from 'styles/utils/typography'
-import COLORS from 'styles/variables/colors'
+import COLORS from 'styles/variables/color'
 import {VSTEP} from 'styles/variables/spacing'
 
 export default {

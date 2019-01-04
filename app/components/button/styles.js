@@ -9,5 +9,7 @@ export default {
     minWidth: toREM(VSTEP * 5),
     outline: 0,
     padding: toREM(VSTEP),
+    transition: 'all 250ms',
+    cursor: 'pointer',
     ...BODY_TEXT
 }

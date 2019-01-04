@@ -1,5 +1,5 @@
 import {toREM} from 'styles/utils/spacing'
-import COLORS from 'styles/variables/colors'
+import COLORS from 'styles/variables/color'
 import {VSTEP} from 'styles/variables/spacing'
 
 export default {

@@ -1,5 +1,5 @@
 import {HEADING_TEXT_MD} from 'styles/utils/typography'
-import COLORS from 'styles/variables/colors'
+import COLORS from 'styles/variables/color'
 
 export default {
     alignItems: 'center',
