@@ -24,14 +24,16 @@ class App extends React.PureComponent {
     }
 
     componentDidMount() {
+        const alarmStorage = new Storage({name: ALARM_STORAGE})
+
         // Once ths app has mounted, check the alarm store for any active
         // alarms. Remove expired ones and restore active ones.
-        new Storage({name: ALARM_STORAGE}).get().then((storedAlarms) => {
+        alarmStorage.get().then((storedAlarms) => {
             const now = Date.now()
             const alarms = Object.values(storedAlarms)
             const activeAlarms = alarms.filter(({id, when}) => {
                 const isActive = when > now
-                !isActive && App.alarms.delete({key: id})
+                !isActive && alarmStorage.delete({key: id})
                 return isActive
             })
 
