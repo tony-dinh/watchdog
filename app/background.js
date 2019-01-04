@@ -7,6 +7,30 @@ browser.runtime.onInstalled.addListener(() => {
     new Storage({name: ALARM_STORAGE})
 })
 
-browser.alarms.onAlarm.addListener(() => {
+browser.runtime.onStartup.addListener(() => {
+    const alarmStorage = new Storage({name: ALARM_STORAGE})
+
+    alarmStorage.get().then((storedAlarms) => {
+        const now = Date.now()
+        const alarms = Object.values(storedAlarms)
+
+        // Remove any expired alarms on startup
+        const activeAlarms = alarms.filter(({id, when}) => {
+            const isActive = when > now
+            !isActive && alarmStorage.delete({key: id})
+            return isActive
+        })
+
+        activeAlarms.length && browser.browserAction.setBadgeText({text: ' ⌛️'})
+    })
+})
+
+browser.alarms.onAlarm.addListener((alarm) => {
+    console.log(alarm)
+
+    const alarmStorage = new Storage({name: ALARM_STORAGE})
+    alarmStorage.delete({key: alarm.name})
+
     Notification.show()
+    browser.browserAction.setBadgeText({text: ''})
 })

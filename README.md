@@ -1,8 +1,8 @@
 <div align="center">
     <img alt="Watchdog Icon" src="./app/static/assets/icon@1x.png">
-    <h1 style="font-size: 3.5rem; font-weight: 700">Watchdog</h1>
 </div>
 
+# Watchdog
 A (WIP) popup browser extension (Chrome & FireFox) for setting a simple timer. Built using [ReactJS](https://github.com/facebook/react) and [EmotionJS](https://github.com/emotion-js/emotion).
 
 

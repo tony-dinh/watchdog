@@ -1,4 +1,5 @@
 import React from 'react'
+import browser from 'webextension-polyfill'
 import Popup from 'components/popup'
 import FullView from 'components/full-view'
 
@@ -26,29 +27,25 @@ class App extends React.PureComponent {
     componentDidMount() {
         const alarmStorage = new Storage({name: ALARM_STORAGE})
 
-        // Once ths app has mounted, check the alarm store for any active
-        // alarms. Remove expired ones and restore active ones.
+        // Once ths app has mounted, check the alarm store for any active alarms.
         alarmStorage.get().then((storedAlarms) => {
             const now = Date.now()
             const alarms = Object.values(storedAlarms)
-            const activeAlarms = alarms.filter(({id, when}) => {
-                const isActive = when > now
-                !isActive && alarmStorage.delete({key: id})
-                return isActive
-            })
+            const alarm = alarms.find(({when}) => when > now)
 
-            if (!activeAlarms.length) {
+            if (!alarm) {
                 return
             }
 
-            this.setState({alarm: activeAlarms[0]})
+            this.onAlarmSet(alarm)
         })
     }
 
-    onAlarmSet = ({duration}) => {
+    onAlarmSet = (alarm) => {
         // When an alarm is set for N duration (ms), we will create a new
         // `Alarm` instance which will be added to the browser alarms & storage
-        this.setState({alarm: new Alarm({duration})})
+        this.setState({alarm: new Alarm(alarm)})
+        browser.browserAction.setBadgeText({text: ' ⌛️'})
     }
 
     onAlarmEnd = () => {

@@ -55,7 +55,10 @@ class Timer extends React.PureComponent {
         // There is a new alarm set, we need to calculate the remaining duration
         // and start the timer if the alarm is still active
         const remainingDuration = alarm.when - Date.now()
-        remainingDuration > 0 && this.start(remainingDuration)
+
+        !this.state.isStarted &&
+        remainingDuration > 0 &&
+        this.start(remainingDuration)
     }
 
 
