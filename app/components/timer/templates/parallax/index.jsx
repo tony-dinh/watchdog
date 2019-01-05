@@ -23,19 +23,22 @@ const ParallaxTimerTemplate = ({
         <div css={styles}>
             <ParallaxLayer
                 className="background"
-                duration={isStarted ? 20000 : 0}
+                duration={20000}
+                isAnimating={isStarted}
                 position="bottom left"
                 src="assets/background.png"
             />
             <ParallaxLayer
                 className="midground"
-                duration={isStarted ? 10000 : 0}
+                duration={10000}
+                isAnimating={isStarted}
                 position="bottom left"
                 src="assets/midground.png"
             />
             <ParallaxLayer
                 className="foreground"
-                duration={isStarted ? 5000 : 0}
+                duration={5000}
+                isAnimating={isStarted}
                 position="bottom left"
                 src="assets/foreground.png"
             />

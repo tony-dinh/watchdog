@@ -15,6 +15,8 @@ export default {
     overflow: 'hidden',
     '.image': {
         animationName: `${slide}`,
+        animationIterationCount: 'infinite',
+        animationTimingFunction: 'linear',
         height: '100%',
         width: '200%',
     }

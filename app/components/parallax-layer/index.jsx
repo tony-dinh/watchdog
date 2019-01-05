@@ -1,28 +1,22 @@
 /** @jsx jsx */
 import {jsx} from '@emotion/core'
+import {prefix} from 'inline-style-prefixer'
 import styles from './styles'
 
 const ParallaxLayer = ({
     className,
     css,
     duration,
+    isAnimating,
     position,
     src
 }) => {
-    let imgStyle = {
+    const imgStyle = prefix({
+        animationDuration: `${duration}ms`,
+        animationPlayState: isAnimating ? 'running' : 'paused',
         background: `url(${src}) repeat-x`,
         backgroundPosition: position,
-    }
-
-    if (duration) {
-        imgStyle = {
-            ...imgStyle,
-            animationDuration: `${duration}ms`,
-            animationFillMode: 'forwards',
-            animationIterationCount: 'infinite',
-            animationTimingFunction: 'linear',
-        }
-    }
+    })
 
     return (
         <div className={className} css={[styles, css]}>
