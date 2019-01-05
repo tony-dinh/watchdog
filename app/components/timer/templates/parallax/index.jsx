@@ -25,19 +25,19 @@ const ParallaxTimerTemplate = ({
                 className="background"
                 duration={isStarted ? 20000 : 0}
                 position="bottom left"
-                src="/build/assets/background.png"
+                src="assets/background.png"
             />
             <ParallaxLayer
                 className="midground"
                 duration={isStarted ? 10000 : 0}
                 position="bottom left"
-                src="/build/assets/midground.png"
+                src="assets/midground.png"
             />
             <ParallaxLayer
                 className="foreground"
                 duration={isStarted ? 5000 : 0}
                 position="bottom left"
-                src="/build/assets/foreground.png"
+                src="assets/foreground.png"
             />
 
             {Boolean(duration) && Boolean(remainingDuration) && (

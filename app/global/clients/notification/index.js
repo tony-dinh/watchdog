@@ -6,7 +6,7 @@ class Notification {
         const notification = {
             type: 'basic',
             title: 'Watchdog',
-            iconUrl: 'build/assets/icon@2x.png',
+            iconUrl: 'assets/icon@2x.png',
             message: 'Time is up!'
         }
 

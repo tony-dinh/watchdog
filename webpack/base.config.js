@@ -54,6 +54,7 @@ const config = {
     plugins: [
         new CopyPlugin([
             {from: path.resolve(ROOT_DIR, 'app/static'), to: path.resolve(ROOT_DIR, 'build')},
+            {from: path.resolve(ROOT_DIR, 'manifest.json'), to: path.resolve(ROOT_DIR, 'build')},
         ]),
         new webpack.DefinePlugin({
             NODE_ENV: JSON.stringify(process.env.NODE_ENV),
