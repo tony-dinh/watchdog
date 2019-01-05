@@ -9,8 +9,8 @@ import styles from './styles'
 
 const Popup = ({alarm, onAlarmEnd, onAlarmSet}) => (
     <div css={styles}>
-        {!alarm && <Caption text="Drag the knob to set a timer" />}
         <Timer alarm={alarm} onAlarmSet={onAlarmSet} onAlarmEnd={onAlarmEnd} />
+        {!alarm && <Caption text="Drag the knob to set a timer" />}
     </div>
 )
 

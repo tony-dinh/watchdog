@@ -85,6 +85,12 @@ class Knob extends React.PureComponent {
     }
 
     onDragEnd = (e) => {
+        // Need this check in case that mouseup/touchend event occurs
+        // without the mousedown/touchstart on the trigger element
+        if (!this.state.isDragging) {
+            return
+        }
+
         e.stopPropagation()
 
         this.setState({

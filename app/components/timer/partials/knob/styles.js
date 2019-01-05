@@ -17,7 +17,7 @@ export default {
         transformOrigin: 'center',
         width: toREM(VSTEP * 3),
         transition: 'all 100ms',
-
+        zIndex: 2,
         '&:hover': {
             transform: 'scale(1.3)'
         }
@@ -26,10 +26,10 @@ export default {
         bottom: 0,
         height: '100%',
         left: 0,
-        opacity: '0.6',
+        opacity: '0.3',
         position: 'absolute',
         right: 0,
-        stroke: COLORS.WHITE,
+        stroke: COLORS.BLACK,
         top: 0,
         width: '100%',
     }

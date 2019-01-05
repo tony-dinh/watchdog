@@ -1,3 +1,4 @@
+const BLACK = '#000000'
 const WHITE = '#FFFFFF'
 const CASPER = '#A9BCD0'
 const CADILLAC = '#AB5067'
@@ -12,5 +13,6 @@ export default {
     },
     UI: {
     },
+    BLACK,
     WHITE
 }

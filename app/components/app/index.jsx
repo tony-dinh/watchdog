@@ -53,6 +53,7 @@ class App extends React.PureComponent {
         // which will remove it from the browser alarms & storage
         this.state.alarm.end().then(() => {
             this.setState({alarm: null})
+            browser.browserAction.setBadgeText({text: ''})
         })
     }
 

@@ -3,12 +3,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {jsx} from '@emotion/core'
-import StopButton from 'components/button/stop'
 
-import Knob from './partials/knob'
-import Progress from './partials/progress'
-import TimeLabel from './partials/time-label';
-import styles from './styles'
+import ParallaxTimerTemplate from './templates/parallax'
 
 class Timer extends React.PureComponent {
     // ===============================
@@ -115,25 +111,15 @@ class Timer extends React.PureComponent {
         const {sensitivity} = this.props
 
         return (
-            <div css={styles}>
-                <Progress progress={this.progress} />
-
-                {Boolean(duration) && Boolean(remainingDuration) && (
-                    <TimeLabel duration={remainingDuration} />
-                )}
-
-                {!isStarted && (
-                    <Knob
-                        sensitivity={sensitivity}
-                        onDrag={this.onDrag}
-                        onDragEnd={this.onDragEnd}
-                    />
-                )}
-
-                {isStarted && (
-                    <StopButton className="stop-button" onClick={this.end} />
-                )}
-            </div>
+            <ParallaxTimerTemplate
+                isStarted={isStarted}
+                duration={duration}
+                remainingDuration={remainingDuration}
+                sensitivity={sensitivity}
+                onDrag={this.onDrag}
+                onDragEnd={this.onDragEnd}
+                onEnd={this.end}
+            />
         )
     }
 }

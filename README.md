@@ -3,11 +3,13 @@
 </div>
 
 # Watchdog
-A (WIP) popup browser extension (Chrome & FireFox) for setting a simple timer. Built using [ReactJS](https://github.com/facebook/react) and [EmotionJS](https://github.com/emotion-js/emotion).
+An over-engineered browser extension for setting a simple timer. Built using [ReactJS](https://github.com/facebook/react) and [EmotionJS](https://github.com/emotion-js/emotion).
 
 
 ## Screenshots
-_Coming eventually..._
+<div align="center">
+    <img height=350 width=350 alt="Watchdog Icon" src="./screenshots/watchdog.gif">
+</div>
 
 ## Development
 
